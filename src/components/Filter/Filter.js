@@ -1,18 +1,26 @@
+import { useDispatch } from 'react-redux';
+import { changeFilter } from 'redux/contactsSlice';
 import css from './Filter.module.css';
-import PropTypes from 'prop-types';
 
-const Filter = ({ filter, onFilter }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+
+  const onFilterChange = e => {
+    const data = e.target.value.trim();
+    dispatch(changeFilter(data));
+  };
+
   return (
     <div className={css.filter}>
       <label className={css.title} htmlFor="filter">
         Find contact by name
       </label>
       <input
-        onChange={onFilter}
+        onChange={onFilterChange}
         className={css.input}
         type="text"
         name="name"
-        value={filter}
+        // value={filter}
         id="filter"
       />
     </div>
@@ -21,7 +29,7 @@ const Filter = ({ filter, onFilter }) => {
 
 export default Filter;
 
-Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
-  onFilter: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//   filter: PropTypes.string.isRequired,
+//   onFilter: PropTypes.func.isRequired,
+// };
