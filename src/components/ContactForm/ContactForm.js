@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { nanoid } from 'nanoid';
-import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/contactsSlice';
+import { nanoid } from 'nanoid';
+import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  
+
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
