@@ -1,4 +1,4 @@
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistStore } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 import { contactsReduser } from './contactsSlice';
 import {
@@ -13,8 +13,8 @@ import {
 export const store = configureStore({
   reducer: {
     contacts: contactsReduser,
-    },
-    
+  },
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
